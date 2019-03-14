@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [NPS\nhupp]
+    FROM WINDOWS WITH DEFAULT_LANGUAGE = [us_english];
+

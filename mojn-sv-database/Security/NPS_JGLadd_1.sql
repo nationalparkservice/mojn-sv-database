@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [NPS\JGLadd]
+    FROM WINDOWS WITH DEFAULT_LANGUAGE = [us_english];
+
