@@ -2,9 +2,9 @@
     [ID]                      INT           IDENTITY (1, 1) NOT NULL,
     [VisitID]                 INT           NOT NULL,
     [CameraID]                TINYINT       NOT NULL,
-    [CameraCardID]            SMALLINT      NOT NULL,
+    [CameraCardID]            SMALLINT      NULL,
     [DataProcessingLevelID]   TINYINT       CONSTRAINT [DF_PhotoActivity_DataProcessingLevelID] DEFAULT ((1)) NOT NULL,
-    [DataProcessingLevelDate] DATETIME      CONSTRAINT [DF_PhotoActivity_DataProcessingLevelDate] DEFAULT (getdate()) NOT NULL,
+    [DataProcessingLevelDate] DATETIME2 (0) CONSTRAINT [DF_PhotoActivity_DataProcessingLevelDate] DEFAULT (getdate()) NOT NULL,
     [DataProcessingLevelNote] VARCHAR (500) NULL,
     [DateCreated]             DATETIME2 (0) CONSTRAINT [DF_PhotoActivity_DateCreated] DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_PhotoActivity] PRIMARY KEY CLUSTERED ([ID] ASC),
@@ -17,52 +17,42 @@
 
 
 GO
-CREATE UNIQUE NONCLUSTERED INDEX [UX_PhotoActivity_VisitID]
-    ON [data].[PhotoActivity]([VisitID] ASC);
+CREATE UNIQUE NONCLUSTERED INDEX [UX_PhotoActivity_VisitID_CameraID]
+    ON [data].[PhotoActivity]([VisitID] ASC, [CameraID] ASC);
 
 
 GO
-CREATE NONCLUSTERED INDEX [IX_PhotoActivity_CameraID]
-    ON [data].[PhotoActivity]([CameraID] ASC);
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'General photo information', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'PhotoActivity';
 
 
 GO
-CREATE NONCLUSTERED INDEX [IX_PhotoActivity_CameraCardID]
-    ON [data].[PhotoActivity]([CameraCardID] ASC);
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Primary key for this table', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'PhotoActivity', @level2type = N'COLUMN', @level2name = N'ID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'General photo information', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'PhotoActivity';
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Foreign key to data.Visit (information about individual sampling visits)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'PhotoActivity', @level2type = N'COLUMN', @level2name = N'VisitID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Primary key for this table', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'PhotoActivity', @level2type = N'COLUMN', @level2name = N'ID';
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Foreign key to ref.Camera (all cameras used for monitoring, each with a unique identifier)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'PhotoActivity', @level2type = N'COLUMN', @level2name = N'CameraID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to data.Visit (information about individual sampling visits)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'PhotoActivity', @level2type = N'COLUMN', @level2name = N'VisitID';
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Foreign key to ref.CameraCard (camera memory cards, each with a unique identifier)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'PhotoActivity', @level2type = N'COLUMN', @level2name = N'CameraCardID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to ref.Camera (all cameras used for monitoring, each with a unique identifier)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'PhotoActivity', @level2type = N'COLUMN', @level2name = N'CameraID';
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Foreign key to lookup.DataProcessingLevel (indicates level of qa/qc that has been applied to data in a given table)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'PhotoActivity', @level2type = N'COLUMN', @level2name = N'DataProcessingLevelID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to ref.CameraCard (lookup of camera memory cards)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'PhotoActivity', @level2type = N'COLUMN', @level2name = N'CameraCardID';
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Date the Data Processing Level was changed', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'PhotoActivity', @level2type = N'COLUMN', @level2name = N'DataProcessingLevelDate';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to lookup.DataProcessingLevel (indicates level of QA/QC that has been applied to data in a given table)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'PhotoActivity', @level2type = N'COLUMN', @level2name = N'DataProcessingLevelID';
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Notes for Data Processing Level Status', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'PhotoActivity', @level2type = N'COLUMN', @level2name = N'DataProcessingLevelNote';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Date the Data Processing Level was changed', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'PhotoActivity', @level2type = N'COLUMN', @level2name = N'DataProcessingLevelDate';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Notes for Data Processing Level Status', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'PhotoActivity', @level2type = N'COLUMN', @level2name = N'DataProcessingLevelNote';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Date the record was created', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'PhotoActivity', @level2type = N'COLUMN', @level2name = N'DateCreated';
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Date the record was created', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'PhotoActivity', @level2type = N'COLUMN', @level2name = N'DateCreated';
 

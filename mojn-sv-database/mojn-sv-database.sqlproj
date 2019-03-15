@@ -87,7 +87,6 @@
     <Build Include="data\Tables\LPIVegetation.sql" />
     <Build Include="data\Tables\Photo.sql" />
     <Build Include="lookup\Tables\ProtectedStatus.sql" />
-    <Build Include="data\Tables\PhotoCoordinates.sql" />
     <Build Include="data\Tables\PhotoActivity.sql" />
     <Build Include="lookup\Tables\UTMZone.sql" />
     <Build Include="data\Tables\TreeCountSpecies.sql" />
