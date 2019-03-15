@@ -111,7 +111,6 @@
     <Build Include="data\Tables\VegetationInventorySpecies.sql" />
     <Build Include="data\Tables\Visit.sql" />
     <Build Include="lookup\Tables\PointType.sql" />
-    <Build Include="data\Tables\TransectCoordinates.sql" />
     <Build Include="ref\Tables\EquipmentTemplate.sql" />
     <Build Include="lookup\Tables\SoilSurfaceClass.sql" />
     <Build Include="ref\Tables\Taxon.sql" />
@@ -148,6 +147,8 @@
     <Build Include="Security\metadata.sql" />
     <Build Include="Security\qc.sql" />
     <Build Include="Security\ref.sql" />
+    <Build Include="lookup\Tables\LengthClass.sql" />
+    <Build Include="lookup\Tables\YesNoNoData.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="mojn-sv-database.refactorlog" />
