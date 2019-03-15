@@ -7,7 +7,8 @@
     [SpringCategoryID]        TINYINT        NOT NULL,
     [TransectLength_m]        DECIMAL (5, 2) NOT NULL,
     [PointInterceptSpacing_m] DECIMAL (5, 2) NOT NULL,
-    [Lat_WGS84]               DECIMAL (8, 6) NOT NULL,
+    [LengthClassID]			  TINYINT		 NOT NULL,
+	[Lat_WGS84]               DECIMAL (8, 6) NOT NULL,
     [Lon_WGS84]               DECIMAL (9, 6) NOT NULL,
     [X_UTM_NAD83_11N]         DECIMAL (8, 2) NULL,
     [Y_UTM_NAD83_11N]         DECIMAL (9, 2) NULL,
@@ -26,7 +27,8 @@
     CONSTRAINT [CK_Site_Y_UTM_NAD83_11N_range] CHECK ([Y_UTM_NAD83_11N]>=(3500000) AND [Y_UTM_NAD83_11N]<=(4350000) OR [Y_UTM_NAD83_11N]=(0)),
     CONSTRAINT [CK_Site_Y_UTM_NAD83_12N_range] CHECK ([Y_UTM_NAD83_12N]>=(3500000) AND [Y_UTM_NAD83_12N]<=(4350000)),
     CONSTRAINT [FK_Site_Park] FOREIGN KEY ([ParkID]) REFERENCES [lookup].[Park] ([ID]),
-    CONSTRAINT [FK_Site_SpringCategory] FOREIGN KEY ([SpringCategoryID]) REFERENCES [lookup].[SpringCategory] ([ID])
+    CONSTRAINT [FK_Site_SpringCategory] FOREIGN KEY ([SpringCategoryID]) REFERENCES [lookup].[SpringCategory] ([ID]),
+	CONSTRAINT [FK_Site_LengthClass] FOREIGN KEY ([LengthClassID]) REFERENCES [lookup].[LengthClass] ([ID])
 );
 
 
