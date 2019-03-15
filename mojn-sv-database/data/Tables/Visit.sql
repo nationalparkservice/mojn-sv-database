@@ -6,6 +6,7 @@
     [StartTime]               DATETIME2 (0)  NULL,
     [WindID]                  TINYINT        NOT NULL,
     [SkyConditionID]          TINYINT        NOT NULL,
+	[VisitTypeID]			  TINYINT		 CONSTRAINT [DF_Visit_VisitType] DEFAULT ((1)) NOT NULL,
     [Notes]                   VARCHAR (2000) NULL,
     [DataProcessingLevelID]   TINYINT        CONSTRAINT [DF_Visit_DataProcessingLevel] DEFAULT ((1)) NOT NULL,
     [DataProcessingLevelDate] DATETIME2 (0)  CONSTRAINT [DF_Visit_DataProcessingLevelDate] DEFAULT (getdate()) NOT NULL,
@@ -20,7 +21,8 @@
     CONSTRAINT [FK_Visit_Protocol] FOREIGN KEY ([ProtocolID]) REFERENCES [ref].[Protocol] ([ID]),
     CONSTRAINT [FK_Visit_Site] FOREIGN KEY ([SiteID]) REFERENCES [data].[Site] ([ID]),
     CONSTRAINT [FK_Visit_SkyCondition] FOREIGN KEY ([SkyConditionID]) REFERENCES [lookup].[SkyCondition] ([ID]),
-    CONSTRAINT [FK_Visit_Wind] FOREIGN KEY ([WindID]) REFERENCES [lookup].[Wind] ([ID])
+    CONSTRAINT [FK_Visit_Wind] FOREIGN KEY ([WindID]) REFERENCES [lookup].[Wind] ([ID]),
+	CONSTRAINT [FK_Visit_VisitType] FOREIGN KEY ([VisitTypeID]) REFERENCES [lookup].[VisitType] ([ID])
 );
 
 
@@ -79,4 +81,7 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Notes for Da
 
 GO
 EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Date the record was created', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'Visit', @level2type = N'COLUMN', @level2name = N'DateCreated';
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to lookup.VisitType (Indicates whether the is routine monitoring or training, calibration, etc.)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'Visit', @level2type = N'COLUMN', @level2name = N'VisitTypeID';
 
