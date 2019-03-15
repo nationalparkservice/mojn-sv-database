@@ -8,7 +8,8 @@
     [EndTime]				  DATETIME2(0)	 NULL, 
 	[WindID]                  TINYINT        NOT NULL,
     [SkyConditionID]          TINYINT        NOT NULL,
-    [Notes]                   VARCHAR (2000) NULL,
+    [WeatherNotes]			  VARCHAR (200)  NULL,
+	[Notes]                   VARCHAR (2000) NULL,
     [DataProcessingLevelID]   TINYINT        CONSTRAINT [DF_Visit_DataProcessingLevel] DEFAULT ((1)) NOT NULL,
     [DataProcessingLevelDate] DATETIME2 (0)  CONSTRAINT [DF_Visit_DataProcessingLevelDate] DEFAULT (getdate()) NOT NULL,
     [DataProcessingLevelNote] VARCHAR (500)  NULL,
@@ -16,6 +17,7 @@
     
     CONSTRAINT [PK_Visit] PRIMARY KEY CLUSTERED ([ID] ASC),
     CONSTRAINT [CK_Visit_DataProcessingLevelNote_DisallowZeroLength] CHECK (len([DataProcessingLevelNote])>(0)),
+	CONSTRAINT [CK_Visit_WeatherNotes_DisallowZeroLength] CHECK (len([WeatherNotes])>(0)),
     CONSTRAINT [CK_Visit_Notes_DisallowZeroLength] CHECK (len([Notes])>(0)),
     CONSTRAINT [CK_Visit_StartTime_Range] CHECK ([StartTime]>=CONVERT([datetime2](0),'5am',(101)) AND [StartTime]<=CONVERT([datetime2](0),'9pm',(101))),
     CONSTRAINT [CK_Visit_StartDate_Range] CHECK ([StartDate]>='1/1/2017' AND [StartDate]<=CONVERT([datetime],CONVERT([varchar],getdate(),(1)),(1))),
@@ -72,6 +74,10 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to lookup.SkyCondition (amount of cloud cover observed)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'Visit', @level2type = N'COLUMN', @level2name = N'SkyConditionID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Notes regarding current/recent weather', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'Visit', @level2type = N'COLUMN', @level2name = N'WeatherNotes';
 
 
 GO
