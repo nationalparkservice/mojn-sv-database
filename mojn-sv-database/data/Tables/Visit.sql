@@ -2,21 +2,26 @@
     [ID]                      INT            IDENTITY (1, 1) NOT NULL,
     [SiteID]                  INT            NOT NULL,
     [ProtocolID]              TINYINT        CONSTRAINT [DF_Visit_ProtocolConfiguration] DEFAULT ((1)) NOT NULL,
-    [VisitDate]               DATETIME2 (0)  NOT NULL,
-    [StartTime]               DATETIME2 (0)  NULL,
-    [WindID]                  TINYINT        NOT NULL,
+    [StartDate]               DATETIME2 (0)  NOT NULL,
+    [EndDate]				  DATETIME2(0)	 NULL, 
+	[StartTime]               DATETIME2 (0)  NULL,
+    [EndTime]				  DATETIME2(0)	 NULL, 
+	[WindID]                  TINYINT        NOT NULL,
     [SkyConditionID]          TINYINT        NOT NULL,
     [Notes]                   VARCHAR (2000) NULL,
     [DataProcessingLevelID]   TINYINT        CONSTRAINT [DF_Visit_DataProcessingLevel] DEFAULT ((1)) NOT NULL,
     [DataProcessingLevelDate] DATETIME2 (0)  CONSTRAINT [DF_Visit_DataProcessingLevelDate] DEFAULT (getdate()) NOT NULL,
     [DataProcessingLevelNote] VARCHAR (500)  NULL,
-    [DateCreated]             DATETIME2 (0)  CONSTRAINT [DF_Visit_DateCreated] DEFAULT (getdate()) NOT NULL,
+    [DateCreated]             DATETIME2 (0)  CONSTRAINT [DF_Visit_DateCreated] DEFAULT (getdate()) NOT NULL
+    
     CONSTRAINT [PK_Visit] PRIMARY KEY CLUSTERED ([ID] ASC),
     CONSTRAINT [CK_Visit_DataProcessingLevelNote_DisallowZeroLength] CHECK (len([DataProcessingLevelNote])>(0)),
     CONSTRAINT [CK_Visit_Notes_DisallowZeroLength] CHECK (len([Notes])>(0)),
-    CONSTRAINT [CK_Visit_StartTime_Range] CHECK ([StartTime]>=CONVERT([datetime2](0),'5am',(101)) AND [StartTime]<=CONVERT([datetime2](0),'8pm',(101))),
-    CONSTRAINT [CK_Visit_VisitDate_Range] CHECK ([VisitDate]>='1/1/2017' AND [VisitDate]<=CONVERT([datetime],CONVERT([varchar],getdate(),(1)),(1))),
-    CONSTRAINT [FK_Visit_DataProcessingLevel] FOREIGN KEY ([DataProcessingLevelID]) REFERENCES [lookup].[DataProcessingLevel] ([ID]),
+    CONSTRAINT [CK_Visit_StartTime_Range] CHECK ([StartTime]>=CONVERT([datetime2](0),'5am',(101)) AND [StartTime]<=CONVERT([datetime2](0),'9pm',(101))),
+    CONSTRAINT [CK_Visit_StartDate_Range] CHECK ([StartDate]>='1/1/2017' AND [StartDate]<=CONVERT([datetime],CONVERT([varchar],getdate(),(1)),(1))),
+    CONSTRAINT [CK_Visit_EndTime_Range] CHECK ([StartTime]>=CONVERT([datetime2](0),'5am',(101)) AND [StartTime]<=CONVERT([datetime2](0),'9pm',(101))),
+    CONSTRAINT [CK_Visit_EndDate_Range] CHECK ([StartDate]>='1/1/2017' AND [StartDate]<=CONVERT([datetime],CONVERT([varchar],getdate(),(1)),(1))),
+	CONSTRAINT [FK_Visit_DataProcessingLevel] FOREIGN KEY ([DataProcessingLevelID]) REFERENCES [lookup].[DataProcessingLevel] ([ID]),
     CONSTRAINT [FK_Visit_Protocol] FOREIGN KEY ([ProtocolID]) REFERENCES [ref].[Protocol] ([ID]),
     CONSTRAINT [FK_Visit_Site] FOREIGN KEY ([SiteID]) REFERENCES [data].[Site] ([ID]),
     CONSTRAINT [FK_Visit_SkyCondition] FOREIGN KEY ([SkyConditionID]) REFERENCES [lookup].[SkyCondition] ([ID]),
@@ -26,7 +31,7 @@
 
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [UX_Visit_SiteID_VisitDate]
-    ON [data].[Visit]([SiteID] ASC, [VisitDate] ASC);
+    ON [data].[Visit]([SiteID] ASC, [StartDate] ASC);
 
 
 GO
@@ -46,11 +51,19 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Date monitoring visit occurred', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'Visit', @level2type = N'COLUMN', @level2name = N'VisitDate';
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Date monitoring visit began', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'Visit', @level2type = N'COLUMN', @level2name = 'StartDate';
 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Time monitoring visit began', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'Visit', @level2type = N'COLUMN', @level2name = N'StartTime';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Date monitoring visit ended', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'Visit', @level2type = N'COLUMN', @level2name = 'EndDate';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Time monitoring visit ended', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'Visit', @level2type = N'COLUMN', @level2name = N'EndTime';
 
 
 GO

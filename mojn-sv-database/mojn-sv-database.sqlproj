@@ -149,4 +149,7 @@
     <Build Include="Security\qc.sql" />
     <Build Include="Security\ref.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="mojn-sv-database.refactorlog" />
+  </ItemGroup>
 </Project>
