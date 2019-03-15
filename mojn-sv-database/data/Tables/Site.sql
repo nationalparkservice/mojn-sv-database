@@ -14,6 +14,7 @@
     [Y_UTM_NAD83_11N]         DECIMAL (9, 2) NULL,
     [X_UTM_NAD83_12N]         DECIMAL (8, 2) NULL,
     [Y_UTM_NAD83_12N]         DECIMAL (9, 2) NULL,
+	[Notes]					  VARCHAR (2000) NULL,
     [DateCreated]             DATETIME2 (0)  CONSTRAINT [DF_Site_DateCreated] DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_SpringLocation] PRIMARY KEY CLUSTERED ([ID] ASC),
     CONSTRAINT [CK_Site_Code_DisallowZeroLength] CHECK (len([Code])>(0)),
@@ -28,7 +29,8 @@
     CONSTRAINT [CK_Site_Y_UTM_NAD83_12N_range] CHECK ([Y_UTM_NAD83_12N]>=(3500000) AND [Y_UTM_NAD83_12N]<=(4350000)),
     CONSTRAINT [FK_Site_Park] FOREIGN KEY ([ParkID]) REFERENCES [lookup].[Park] ([ID]),
     CONSTRAINT [FK_Site_SpringCategory] FOREIGN KEY ([SpringCategoryID]) REFERENCES [lookup].[SpringCategory] ([ID]),
-	CONSTRAINT [FK_Site_LengthClass] FOREIGN KEY ([LengthClassID]) REFERENCES [lookup].[LengthClass] ([ID])
+	CONSTRAINT [CK_Site_Notes_DisallowZeroLength] CHECK (len([Notes])>(0)),
+	CONSTRAINT [FK_Site_LengthClass] FOREIGN KEY ([LengthClassID]) REFERENCES [lookup].[LengthClass] ([Class])
 );
 
 
@@ -108,5 +110,9 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'UTM Y coordi
 
 
 GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Notes about this site', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'Site', @level2type = N'COLUMN', @level2name = N'Notes';
+
+GO
 EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Date the record was created', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'Site', @level2type = N'COLUMN', @level2name = N'DateCreated';
 
+GO
