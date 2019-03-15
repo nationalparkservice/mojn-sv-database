@@ -148,6 +148,9 @@
     <Build Include="Security\ref.sql" />
     <Build Include="lookup\Tables\LengthClass.sql" />
     <Build Include="lookup\Tables\YesNoNoData.sql" />
+    <Build Include="data\Tables\PhotoTransectEndpoint.sql" />
+    <Build Include="lookup\Tables\TransectEnd.sql" />
+    <Build Include="lookup\Tables\DirectionFacing.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="mojn-sv-database.refactorlog" />
