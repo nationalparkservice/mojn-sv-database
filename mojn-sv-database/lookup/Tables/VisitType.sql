@@ -10,22 +10,7 @@
 ) ON [PRIMARY]
 
 GO
-SET IDENTITY_INSERT [lookup].[VisitType] ON 
 
-GO
-INSERT [lookup].[VisitType] ([ID], [Code], [Label], [Summary]) VALUES (1, N'P', N'Primary', N'Primary monitoring visit')
-GO
-INSERT [lookup].[VisitType] ([ID], [Code], [Label], [Summary]) VALUES (2, N'R', N'Replicate', N'Replicate monitoring visit')
-GO
-INSERT [lookup].[VisitType] ([ID], [Code], [Label], [Summary]) VALUES (3, N'T', N'Training', N'Training monitoring visit')
-GO
-INSERT [lookup].[VisitType] ([ID], [Code], [Label], [Summary]) VALUES (4, N'C', N'Calibration', N'Crew calibration monitoring visit')
-GO
-SET IDENTITY_INSERT [lookup].[VisitType] OFF
-GO
-SET ANSI_PADDING ON
-
-GO
 /****** Object:  Index [UN_VisitType_Code]    Script Date: 3/14/2019 9:16:29 PM ******/
 ALTER TABLE [lookup].[VisitType] ADD  CONSTRAINT [UN_VisitType_Code] UNIQUE NONCLUSTERED 
 (
