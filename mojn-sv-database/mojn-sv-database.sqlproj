@@ -70,6 +70,9 @@
     <Folder Include="Security\" />
     <Folder Include="dbo\" />
     <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="app" />
+    <Folder Include="app\Tables" />
+    <Folder Include="app\Views" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="data\Tables\TreeCountActivity.sql" />
@@ -148,5 +151,8 @@
     <Build Include="Security\metadata.sql" />
     <Build Include="Security\qc.sql" />
     <Build Include="Security\ref.sql" />
+    <Build Include="app\Tables\ConfigurationVariable.sql" />
+    <Build Include="app\Views\DataGateway.sql" />
+    <Build Include="Security\app.sql" />
   </ItemGroup>
 </Project>
