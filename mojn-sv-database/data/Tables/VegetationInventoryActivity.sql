@@ -11,9 +11,7 @@
     [DateCreated]             DATETIME2 (0)  CONSTRAINT [DF_VegetationInventoryActivity_DateCreated] DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_VegetationInventoryActivity] PRIMARY KEY CLUSTERED ([ID] ASC),
     CONSTRAINT [CK_VegetationInventoryActivity_DataProcessingLevelNote_DisallowZeroLength] CHECK (len([DataProcessingLevelNote])>(0)),
-    CONSTRAINT [CK_VegetationInventoryActivity_EndTime_Range] CHECK ([EndTime]>[StartTime] AND [EndTime]>=CONVERT([datetime2](0),'5am',(101)) AND [EndTime]<=CONVERT([datetime2](0),'8pm',(101))),
     CONSTRAINT [CK_VegetationInventoryActivity_Notes_DisallowZeroLength] CHECK (len([Notes])>(0)),
-    CONSTRAINT [CK_VegetationInventoryActivity_StartTime_Range] CHECK ([StartTime]>=CONVERT([datetime2](0),'5am',(101)) AND [StartTime]<=CONVERT([datetime2](0),'8pm',(101))),
     CONSTRAINT [FK_VegetationInventoryActivity_DataProcessingLevel] FOREIGN KEY ([DataProcessingLevelID]) REFERENCES [lookup].[DataProcessingLevel] ([ID]),
     CONSTRAINT [FK_VegetationInventoryActivity_Transect] FOREIGN KEY ([TransectID]) REFERENCES [data].[Transect] ([ID]),
     CONSTRAINT [FK_VegetationInventoryActivity_Visit] FOREIGN KEY ([VisitID]) REFERENCES [data].[Visit] ([ID])

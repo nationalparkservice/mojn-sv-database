@@ -11,9 +11,7 @@
     [DateCreated]             DATETIME2 (0)  CONSTRAINT [DF_LPITransect_DateCreated] DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_LPITransect] PRIMARY KEY CLUSTERED ([ID] ASC),
     CONSTRAINT [CK_LPIActivity_DataProcessingLevelNote_DisallowZeroLength] CHECK (len([DataProcessingLevelNote])>(0)),
-    CONSTRAINT [CK_LPIActivity_EndTime_Range] CHECK ([EndTime]>[StartTime] AND [EndTime]>=CONVERT([datetime2](0),'5am',(101)) AND [EndTime]<=CONVERT([datetime2](0),'8pm',(101))),
     CONSTRAINT [CK_LPIActivity_Notes_DisallowZeroLength] CHECK (len([Notes])>(0)),
-    CONSTRAINT [CK_LPIActivity_StartTime_Range] CHECK ([StartTime]>=CONVERT([datetime2](0),'5am',(101)) AND [StartTime]<=CONVERT([datetime2](0),'8pm',(101))),
     CONSTRAINT [FK_LPIActivity_DataProcessingLevel] FOREIGN KEY ([DataProcessingLevelID]) REFERENCES [lookup].[DataProcessingLevel] ([ID]),
     CONSTRAINT [FK_LPIActivity_Transect] FOREIGN KEY ([TransectID]) REFERENCES [data].[Transect] ([ID]),
     CONSTRAINT [FK_LPIActivity_Visit] FOREIGN KEY ([VisitID]) REFERENCES [data].[Visit] ([ID])

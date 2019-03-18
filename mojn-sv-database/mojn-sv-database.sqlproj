@@ -90,7 +90,6 @@
     <Build Include="data\Tables\LPIVegetation.sql" />
     <Build Include="data\Tables\Photo.sql" />
     <Build Include="lookup\Tables\ProtectedStatus.sql" />
-    <Build Include="data\Tables\PhotoCoordinates.sql" />
     <Build Include="data\Tables\PhotoActivity.sql" />
     <Build Include="lookup\Tables\UTMZone.sql" />
     <Build Include="data\Tables\TreeCountSpecies.sql" />
@@ -114,7 +113,6 @@
     <Build Include="data\Tables\VegetationInventorySpecies.sql" />
     <Build Include="data\Tables\Visit.sql" />
     <Build Include="lookup\Tables\PointType.sql" />
-    <Build Include="data\Tables\TransectCoordinates.sql" />
     <Build Include="ref\Tables\EquipmentTemplate.sql" />
     <Build Include="lookup\Tables\SoilSurfaceClass.sql" />
     <Build Include="ref\Tables\Taxon.sql" />
@@ -151,6 +149,19 @@
     <Build Include="Security\metadata.sql" />
     <Build Include="Security\qc.sql" />
     <Build Include="Security\ref.sql" />
+    <Build Include="lookup\Tables\LengthClass.sql" />
+    <Build Include="lookup\Tables\YesNoNoData.sql" />
+    <Build Include="data\Tables\PhotoTransectEndpoint.sql" />
+    <Build Include="lookup\Tables\TransectEnd.sql" />
+    <Build Include="lookup\Tables\DirectionFacing.sql" />
+    <Build Include="data\Tables\LPIActivityPersonnel.sql" />
+    <Build Include="data\Tables\PhotoActivityPersonnel.sql" />
+    <Build Include="data\Tables\TreeCountActivityPersonnel.sql" />
+    <Build Include="data\Tables\VegetationInventoryActivityPersonnel.sql" />
+    <Build Include="data\Tables\UnknownPlantPersonnel.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="mojn-sv-database.refactorlog" />
     <Build Include="app\Tables\ConfigurationVariable.sql" />
     <Build Include="app\Views\DataGateway.sql" />
     <Build Include="Security\app.sql" />
