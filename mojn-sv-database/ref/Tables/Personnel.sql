@@ -21,7 +21,7 @@
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Lookup of MOJN Personnel (Temporary)', @level0type = N'SCHEMA', @level0name = N'ref', @level1type = N'TABLE', @level1name = N'Personnel';
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Lookup of MOJN Personnel', @level0type = N'SCHEMA', @level0name = N'ref', @level1type = N'TABLE', @level1name = N'Personnel';
 
 
 GO
