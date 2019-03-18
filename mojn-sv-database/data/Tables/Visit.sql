@@ -15,7 +15,6 @@
     CONSTRAINT [PK_Visit] PRIMARY KEY CLUSTERED ([ID] ASC),
     CONSTRAINT [CK_Visit_DataProcessingLevelNote_DisallowZeroLength] CHECK (len([DataProcessingLevelNote])>(0)),
     CONSTRAINT [CK_Visit_Notes_DisallowZeroLength] CHECK (len([Notes])>(0)),
-    CONSTRAINT [CK_Visit_StartTime_Range] CHECK ([StartTime]>=CONVERT([datetime2](0),'5am',(101)) AND [StartTime]<=CONVERT([datetime2](0),'8pm',(101))),
     CONSTRAINT [CK_Visit_VisitDate_Range] CHECK ([VisitDate]>='1/1/2017' AND [VisitDate]<=CONVERT([datetime],CONVERT([varchar],getdate(),(1)),(1))),
     CONSTRAINT [FK_Visit_DataProcessingLevel] FOREIGN KEY ([DataProcessingLevelID]) REFERENCES [lookup].[DataProcessingLevel] ([ID]),
     CONSTRAINT [FK_Visit_Protocol] FOREIGN KEY ([ProtocolID]) REFERENCES [ref].[Protocol] ([ID]),
