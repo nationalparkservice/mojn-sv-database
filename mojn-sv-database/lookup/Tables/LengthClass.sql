@@ -25,5 +25,5 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Number of tr
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Distance between transects in meters', @level0type = N'SCHEMA', @level0name = N'lookup', @level1type = N'TABLE', @level1name = N'LengthClass', @level2type = N'COLUMN', @level2name = N'TransectSpacing';
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Distance between transects in meters', @level0type = N'SCHEMA', @level0name = N'lookup', @level1type = N'TABLE', @level1name = N'LengthClass', @level2type = N'COLUMN', @level2name = N'TransectSpacing_m';
 

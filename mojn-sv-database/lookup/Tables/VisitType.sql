@@ -17,24 +17,22 @@ ALTER TABLE [lookup].[VisitType] ADD  CONSTRAINT [UN_VisitType_Code] UNIQUE NONC
 	[Code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-SET ANSI_PADDING ON
 
-GO
 /****** Object:  Index [UN_VisitType_Label]    Script Date: 3/14/2019 9:16:29 PM ******/
 ALTER TABLE [lookup].[VisitType] ADD  CONSTRAINT [UN_VisitType_Label] UNIQUE NONCLUSTERED 
 (
 	[Label] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [lookup].[VisitType]  WITH CHECK ADD  CONSTRAINT [CK_VisitType_Code_DisallowZeroLength] CHECK  ((len([Code])>(0)))
+ALTER TABLE [lookup].[VisitType]  ADD  CONSTRAINT [CK_VisitType_Code_DisallowZeroLength] CHECK  ((len([Code])>(0)))
 GO
 ALTER TABLE [lookup].[VisitType] CHECK CONSTRAINT [CK_VisitType_Code_DisallowZeroLength]
 GO
-ALTER TABLE [lookup].[VisitType]  WITH CHECK ADD  CONSTRAINT [CK_VisitType_Label_DisallowZeroLength] CHECK  ((len([Label])>(0)))
+ALTER TABLE [lookup].[VisitType]  ADD  CONSTRAINT [CK_VisitType_Label_DisallowZeroLength] CHECK  ((len([Label])>(0)))
 GO
 ALTER TABLE [lookup].[VisitType] CHECK CONSTRAINT [CK_VisitType_Label_DisallowZeroLength]
 GO
-ALTER TABLE [lookup].[VisitType]  WITH CHECK ADD  CONSTRAINT [CK_VisitType_Summary_DisallowZeroLength] CHECK  ((len([Summary])>(0)))
+ALTER TABLE [lookup].[VisitType]  ADD  CONSTRAINT [CK_VisitType_Summary_DisallowZeroLength] CHECK  ((len([Summary])>(0)))
 GO
 ALTER TABLE [lookup].[VisitType] CHECK CONSTRAINT [CK_VisitType_Summary_DisallowZeroLength]
 GO

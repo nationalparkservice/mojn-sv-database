@@ -1,2 +1,2 @@
-CREATE VIEW [lookup].[ProtectedStatus_Shared]
-	AS SELECT * FROM [$(mojnSharedTables)].[lookup].[ProtectedStatus]
+CREATE VIEW [ref].[Personnel_Shared]
+	AS SELECT * FROM [$(mojnSharedTables)].[ref].[Personnel]

@@ -73,6 +73,8 @@
     <Folder Include="app" />
     <Folder Include="app\Tables" />
     <Folder Include="app\Views" />
+    <Folder Include="ref\Views" />
+    <Folder Include="lookup\Views" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="data\Tables\TreeCountActivity.sql" />
@@ -89,7 +91,6 @@
     <Build Include="lookup\Tables\DataAccuracy.sql" />
     <Build Include="data\Tables\LPIVegetation.sql" />
     <Build Include="data\Tables\Photo.sql" />
-    <Build Include="lookup\Tables\ProtectedStatus.sql" />
     <Build Include="data\Tables\PhotoActivity.sql" />
     <Build Include="lookup\Tables\UTMZone.sql" />
     <Build Include="data\Tables\TreeCountSpecies.sql" />
@@ -98,7 +99,7 @@
     <Build Include="lookup\Tables\DataProcessingLevel.sql" />
     <Build Include="ref\Tables\GPSUnit.sql" />
     <Build Include="lookup\Tables\DataQualityFlag.sql" />
-    <Build Include="ref\Tables\PhotoShortDescription.sql" />
+    <Build Include="ref\Tables\PhotoDescriptionCode.sql" />
     <Build Include="data\Tables\LPIDisturbance.sql" />
     <Build Include="ref\Tables\CameraCard.sql" />
     <Build Include="ref\Tables\Personnel.sql" />
@@ -159,11 +160,36 @@
     <Build Include="data\Tables\TreeCountActivityPersonnel.sql" />
     <Build Include="data\Tables\VegetationInventoryActivityPersonnel.sql" />
     <Build Include="data\Tables\UnknownPlantPersonnel.sql" />
+    <Build Include="ref\Views\Personnel_Shared.sql" />
+    <Build Include="lookup\Tables\VisitType.sql" />
+    <Build Include="lookup\Views\ProtectedStatus_Shared.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="mojn-sv-database.refactorlog" />
     <Build Include="app\Tables\ConfigurationVariable.sql" />
     <Build Include="app\Views\DataGateway.sql" />
     <Build Include="Security\app.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Include="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\Extensions\Microsoft\SQLDB\Extensions\SqlServer\130\SqlSchemas\master.dacpac">
+      <HintPath>$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\130\SqlSchemas\master.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\mojn-shared-tables\mojn-shared-tables\mojn-shared-tables.sqlproj">
+      <Name>mojn-shared-tables</Name>
+      <Project>{1c07a033-9d7b-4691-b72d-8402095f5ee2}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseSqlCmdVariable>mojnSharedTables</DatabaseSqlCmdVariable>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="mojnSharedTables">
+      <DefaultValue>MOJN_SharedTables</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
   </ItemGroup>
 </Project>
