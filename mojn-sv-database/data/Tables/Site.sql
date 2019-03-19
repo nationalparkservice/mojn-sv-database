@@ -5,7 +5,7 @@
     [Code]                    VARCHAR (20)   NOT NULL,
     [AccessDirections]        VARCHAR (2000) NULL,
     [SpringCategoryID]        TINYINT        NOT NULL,
-	[SiteProtectionStatusID]  TINYINT        NOT NULL,
+	[ProtectedStatusID]  TINYINT        NOT NULL,
     [TransectLength_m]        DECIMAL (5, 2) NOT NULL,
     [PointInterceptSpacing_m] DECIMAL (5, 2) NOT NULL,
     [LengthClassID]			  TINYINT		 NOT NULL,
@@ -21,7 +21,6 @@
     CONSTRAINT [CK_Site_X_UTM_NAD83_11N_range] CHECK ([X_UTM_NAD83_11N]>=(350000) AND [X_UTM_NAD83_11N]<=(900000) OR [X_UTM_NAD83_11N]=(0)),
     CONSTRAINT [CK_Site_Y_UTM_NAD83_11N_range] CHECK ([Y_UTM_NAD83_11N]>=(3500000) AND [Y_UTM_NAD83_11N]<=(4350000) OR [Y_UTM_NAD83_11N]=(0)),
     CONSTRAINT [FK_Site_Park] FOREIGN KEY ([ParkID]) REFERENCES [lookup].[Park] ([ID]),
-	CONSTRAINT [FK_Site_SiteProtectionStatus] FOREIGN KEY ([SiteProtectionStatusID]) REFERENCES [lookup].[ProtectedStatus_Shared] ([ID]),
     CONSTRAINT [FK_Site_SpringCategory] FOREIGN KEY ([SpringCategoryID]) REFERENCES [lookup].[SpringCategory] ([ID]),
 	CONSTRAINT [CK_Site_Notes_DisallowZeroLength] CHECK (len([Notes])>(0)),
 	CONSTRAINT [FK_Site_LengthClass] FOREIGN KEY ([LengthClassID]) REFERENCES [lookup].[LengthClass] ([Class])
@@ -56,7 +55,7 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to lookup.ProtectedStatus', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'Site', @level2type = N'COLUMN', @level2name = N'SiteProtectionStatusID';
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to lookup.ProtectedStatus', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'Site', @level2type = N'COLUMN', @level2name = 'ProtectedStatusID';
 
 
 GO
