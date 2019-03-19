@@ -21,7 +21,7 @@
     CONSTRAINT [CK_Site_X_UTM_NAD83_11N_range] CHECK ([X_UTM_NAD83_11N]>=(350000) AND [X_UTM_NAD83_11N]<=(900000) OR [X_UTM_NAD83_11N]=(0)),
     CONSTRAINT [CK_Site_Y_UTM_NAD83_11N_range] CHECK ([Y_UTM_NAD83_11N]>=(3500000) AND [Y_UTM_NAD83_11N]<=(4350000) OR [Y_UTM_NAD83_11N]=(0)),
     CONSTRAINT [FK_Site_Park] FOREIGN KEY ([ParkID]) REFERENCES [lookup].[Park] ([ID]),
-	CONSTRAINT [FK_Site_SiteProtectionStatus] FOREIGN KEY ([SiteProtectionStatusID]) REFERENCES [lookup].[ProtectedStatus] ([ID]),
+	CONSTRAINT [FK_Site_SiteProtectionStatus] FOREIGN KEY ([SiteProtectionStatusID]) REFERENCES [lookup].[ProtectedStatus_Shared] ([ID]),
     CONSTRAINT [FK_Site_SpringCategory] FOREIGN KEY ([SpringCategoryID]) REFERENCES [lookup].[SpringCategory] ([ID]),
 	CONSTRAINT [CK_Site_Notes_DisallowZeroLength] CHECK (len([Notes])>(0)),
 	CONSTRAINT [FK_Site_LengthClass] FOREIGN KEY ([LengthClassID]) REFERENCES [lookup].[LengthClass] ([Class])
