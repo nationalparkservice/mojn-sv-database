@@ -2,8 +2,8 @@
     [ID]                     INT           IDENTITY (1, 1) NOT NULL,
     [PhotoActivityID]        INT           NOT NULL,
 	[DateTaken]				 DATETIME2 (0) NOT NULL,
-    [PhotoDescriptionCodeID] TINYINT      NOT NULL,
-    [IsLibraryPhotoID]       TINYINT       NOT NULL,
+    [PhotoDescriptionCodeID] SMALLINT      NOT NULL,
+    [IsLibraryPhotoID]       VARCHAR(2)       NOT NULL,
     [OriginalFilePath]       VARCHAR (300) NOT NULL,
     [RenamedFilePath]        VARCHAR (300) NULL,
 	[GPSUnitID]				TINYINT        NULL,
@@ -18,7 +18,7 @@
     CONSTRAINT [CK_Photo_Notes_DisallowZeroLength] CHECK (len([Notes])>(0)),
     CONSTRAINT [CK_Photo_OriginalFilePath_DisallowZeroLength] CHECK (len([OriginalFilePath])>(0)),
     CONSTRAINT [CK_Photo_RenamedFilePath_DisallowZeroLength] CHECK (len([RenamedFilePath])>(0)),
-    CONSTRAINT [FK_Photo_IsLibraryPhoto] FOREIGN KEY ([IsLibraryPhotoID]) REFERENCES [lookup].[IsLibraryPhoto] ([ID]),
+    CONSTRAINT [FK_Photo_IsLibraryPhoto] FOREIGN KEY ([IsLibraryPhotoID]) REFERENCES [lookup].[YesNoNoData] ([ID]),
     CONSTRAINT [FK_Photo_PhotoActivity] FOREIGN KEY ([PhotoActivityID]) REFERENCES [data].[PhotoActivity] ([ID]),
     CONSTRAINT [FK_Photo_PhotoDescriptionCode] FOREIGN KEY ([PhotoDescriptionCodeID]) REFERENCES [ref].[PhotoDescriptionCode] ([ID]),
 	CONSTRAINT [CK_Photo_UtmX_m] CHECK (UtmX_m IS NULL OR ([UtmX_m]>=(200000) AND [UtmX_m]<=(900000))),
@@ -47,7 +47,7 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Foreign key
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Foreign key to lookup.IsLibraryPhoto (indicates whether photo may be a good candiate for inclusion in newsletters or other communication products)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'Photo', @level2type = N'COLUMN', @level2name = N'IsLibraryPhotoID';
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Foreign key to lookup.YesNoNoData (indicates whether photo may be a good candiate for inclusion in newsletters or other communication products)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'Photo', @level2type = N'COLUMN', @level2name = N'IsLibraryPhotoID';
 
 
 GO

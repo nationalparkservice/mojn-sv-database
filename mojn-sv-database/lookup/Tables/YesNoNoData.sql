@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [lookup].[YesNoNoData] (
     [ID]        VARCHAR(2)       NOT NULL,
     [Label]      VARCHAR (9)   NOT NULL,
-    [Summary]     VARCHAR (25)  NOT NULL,
+    [Summary]     VARCHAR (50)  NOT NULL,
     [SortOrder] TINYINT       NULL,
     CONSTRAINT [PK_YesNoNoData] PRIMARY KEY CLUSTERED ([ID] ASC),
     CONSTRAINT [CK_YesNoNoData_Label_DisallowZeroLength] CHECK (len([Label])>(0)),
