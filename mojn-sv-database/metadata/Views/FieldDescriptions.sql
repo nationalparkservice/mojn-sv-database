@@ -1,7 +1,7 @@
 ﻿
 CREATE VIEW [metadata].[FieldDescriptions]
 AS
-SELECT        s.name AS SchemaName, t.Name AS TableName, c.name AS ColumnName, tp.name AS DataType, c.max_length AS FieldSize, c.precision AS Precision, c.scale AS Scale, c.is_nullable as NullsAllowed, ep.value AS ColumnDescription
+SELECT        s.name AS SchemaName, t.name AS TableName, c.name AS ColumnName, tp.name AS DataType, c.max_length AS FieldSize, c.precision AS Precision, c.scale AS Scale, c.is_nullable as NullsAllowed, ep.value AS ColumnDescription
 FROM            sys.tables t INNER JOIN
                          sys.schemas s ON t.schema_id = s.schema_id INNER JOIN
                          sys.columns c ON t.object_id = c.object_id INNER JOIN

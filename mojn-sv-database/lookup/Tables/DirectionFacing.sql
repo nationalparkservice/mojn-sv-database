@@ -9,12 +9,12 @@
 
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [UN_DirectionFacing_Code]
-    ON [lookup].[IsDead]([Code] ASC);
+    ON [lookup].[DirectionFacing]([Code] ASC);
 
 
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [UN_DirectionFacing_Label]
-    ON [lookup].[IsDead]([Label] ASC);
+    ON [lookup].[DirectionFacing]([Label] ASC);
 
 
 GO
