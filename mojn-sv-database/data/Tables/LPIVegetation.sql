@@ -4,10 +4,10 @@
     [TaxonID]            INT           NOT NULL,
     [UnknownPlantCodeID] TINYINT       CONSTRAINT [DF_LPIVegetation_UnknownPlantCodeID] DEFAULT ((27)) NOT NULL,
     [LayerID]            TINYINT       NOT NULL,
-    [IsDeadID]           TINYINT       NOT NULL,
+    [IsDeadID]           VARCHAR(2)       NOT NULL,
     [DateCreated]        DATETIME2 (0) CONSTRAINT [DF_LPIVegetation_DateCreated] DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_LPIVegetation] PRIMARY KEY CLUSTERED ([ID] ASC),
-    CONSTRAINT [FK_LPIVegetation_IsDead] FOREIGN KEY ([IsDeadID]) REFERENCES [lookup].[IsDead] ([ID]),
+    CONSTRAINT [FK_LPIVegetation_IsDead] FOREIGN KEY ([IsDeadID]) REFERENCES [lookup].[YesNoNoData] ([ID]),
     CONSTRAINT [FK_LPIVegetation_Layer] FOREIGN KEY ([LayerID]) REFERENCES [lookup].[Layer] ([ID]),
     CONSTRAINT [FK_LPIVegetation_LPIPoint] FOREIGN KEY ([LPIPointID]) REFERENCES [data].[LPIPoint] ([ID]),
     CONSTRAINT [FK_LPIVegetation_Taxon] FOREIGN KEY ([TaxonID]) REFERENCES [ref].[Taxon] ([ID]),
@@ -45,7 +45,7 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to lookup.IsDead (indicates whether plant is dead)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'LPIVegetation', @level2type = N'COLUMN', @level2name = N'IsDeadID';
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to lookup.YesNoNoData (indicates whether plant is dead)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'LPIVegetation', @level2type = N'COLUMN', @level2name = N'IsDeadID';
 
 
 GO

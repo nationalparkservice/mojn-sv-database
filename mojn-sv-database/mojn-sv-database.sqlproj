@@ -78,7 +78,6 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="data\Tables\TreeCountActivity.sql" />
-    <Build Include="lookup\Tables\IsCollected.sql" />
     <Build Include="data\Tables\LPIPoint.sql" />
     <Build Include="lookup\Tables\SkyCondition.sql" />
     <Build Include="lookup\Tables\Wind.sql" />
@@ -86,7 +85,6 @@
     <Build Include="lookup\Tables\Phenology.sql" />
     <Build Include="data\Tables\Site.sql" />
     <Build Include="data\Tables\VegetationInventoryActivity.sql" />
-    <Build Include="lookup\Tables\IsDead.sql" />
     <Build Include="lookup\Tables\PersonnelRole.sql" />
     <Build Include="lookup\Tables\DataAccuracy.sql" />
     <Build Include="data\Tables\LPIVegetation.sql" />
@@ -94,7 +92,6 @@
     <Build Include="data\Tables\PhotoActivity.sql" />
     <Build Include="lookup\Tables\UTMZone.sql" />
     <Build Include="data\Tables\TreeCountSpecies.sql" />
-    <Build Include="lookup\Tables\IsLibraryPhoto.sql" />
     <Build Include="ref\Tables\Camera.sql" />
     <Build Include="lookup\Tables\DataProcessingLevel.sql" />
     <Build Include="ref\Tables\GPSUnit.sql" />
