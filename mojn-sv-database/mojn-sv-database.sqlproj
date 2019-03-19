@@ -160,6 +160,7 @@
     <Build Include="ref\Views\Personnel_Shared.sql" />
     <Build Include="lookup\Tables\VisitType.sql" />
     <Build Include="lookup\Views\ProtectedStatus_Shared.sql" />
+    <Build Include="lookup\Tables\PhotoSOP.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="mojn-sv-database.refactorlog" />

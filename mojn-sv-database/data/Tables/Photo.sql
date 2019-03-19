@@ -2,7 +2,7 @@
     [ID]                     INT           IDENTITY (1, 1) NOT NULL,
     [PhotoActivityID]        INT           NOT NULL,
 	[DateTaken]				 DATETIME2 (0) NOT NULL,
-    [PhotoDescriptionCodeID] TINYINT      NOT NULL,
+    [PhotoDescriptionCodeID] SMALLINT      NOT NULL,
     [IsLibraryPhotoID]       VARCHAR(2)       NOT NULL,
     [OriginalFilePath]       VARCHAR (300) NOT NULL,
     [RenamedFilePath]        VARCHAR (300) NULL,
