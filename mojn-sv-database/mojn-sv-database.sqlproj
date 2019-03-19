@@ -161,7 +161,7 @@
     <Build Include="data\Tables\UnknownPlantPersonnel.sql" />
     <Build Include="ref\Views\Personnel_Shared.sql" />
     <Build Include="lookup\Tables\VisitType.sql" />
-    <Build Include="lookup\Views\ProtectedStatus_Shared.sql" />
+    <Build Include="lookup\Tables\ProtectedStatus.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="mojn-sv-database.refactorlog" />
