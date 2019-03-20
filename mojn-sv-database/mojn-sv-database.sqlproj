@@ -101,7 +101,6 @@
     <Build Include="lookup\Tables\Park.sql" />
     <Build Include="ref\Tables\Protocol.sql" />
     <Build Include="lookup\Tables\SpringCategory.sql" />
-    <Build Include="lookup\Tables\Subunit.sql" />
     <Build Include="lookup\Tables\TaxonomicReferenceAuthority.sql" />
     <Build Include="lookup\Tables\TaxonomicStandard.sql" />
     <Build Include="data\Tables\VegetationInventorySpecies.sql" />
