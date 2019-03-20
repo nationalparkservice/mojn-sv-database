@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [data].[UnknownPlant] (
     [ID]                     INT            IDENTITY (1, 1) NOT NULL,
     [VisitID]                INT            NOT NULL,
-    [IsCollectedID]          TINYINT        NOT NULL,
+    [IsCollectedID]          VARCHAR(2)        NOT NULL,
     [UnknownPlantCodeID]     TINYINT        NOT NULL,
     [GeneralDescription]     VARCHAR (1000) NULL,
     [MostSalientFeature]     VARCHAR (500)  NULL,
@@ -36,7 +36,7 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to lookup.IsCollected (indicates whether an unknown plant sample was collected)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'UnknownPlant', @level2type = N'COLUMN', @level2name = N'IsCollectedID';
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to lookup.YesNoNoData (indicates whether an unknown plant sample was collected)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'UnknownPlant', @level2type = N'COLUMN', @level2name = N'IsCollectedID';
 
 
 GO

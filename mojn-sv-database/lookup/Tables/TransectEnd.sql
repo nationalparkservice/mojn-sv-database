@@ -9,12 +9,12 @@
 
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [UN_TransectEnd_Code]
-    ON [lookup].[IsDead]([Code] ASC);
+    ON [lookup].[TransectEnd]([Code] ASC);
 
 
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [UN_TransectEnd_Label]
-    ON [lookup].[IsDead]([Label] ASC);
+    ON [lookup].[TransectEnd]([Label] ASC);
 
 
 GO
