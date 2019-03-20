@@ -42,4 +42,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ProtectedStatusID" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="ea47fe20-672b-424c-a5fd-138278ad0599" ChangeDateTime="03/20/2019 17:10:26">
+    <Property Name="ElementName" Value="[data].[Site].[ParkID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[data].[Site]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ParkCode" />
+  </Operation>
 </Operations>
