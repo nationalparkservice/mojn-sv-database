@@ -4,7 +4,6 @@
     [PersonnelRoleID] TINYINT       NOT NULL,
     [DateCreated]     DATETIME2 (0) CONSTRAINT [DF_PhotoActivityPersonnel_DateCreated] DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_PhotoActivityPersonnel] PRIMARY KEY CLUSTERED ([PhotoActivityID] ASC, [PersonnelID] ASC, [PersonnelRoleID] ASC),
-    CONSTRAINT [FK_PhotoActivityPersonnel_Personnel] FOREIGN KEY ([PersonnelID]) REFERENCES [ref].[Personnel] ([ID]),
     CONSTRAINT [FK_PhotoActivityPersonnel_PersonnelRole] FOREIGN KEY ([PersonnelRoleID]) REFERENCES [lookup].[PersonnelRole] ([ID]),
     CONSTRAINT [FK_PhotoActivityPersonnel_PhotoActivity] FOREIGN KEY ([PhotoActivityID]) REFERENCES [data].[PhotoActivity] ([ID])
 );

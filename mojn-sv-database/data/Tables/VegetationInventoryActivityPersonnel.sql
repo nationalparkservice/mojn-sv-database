@@ -4,7 +4,6 @@
     [PersonnelRoleID] TINYINT       NOT NULL,
     [DateCreated]     DATETIME2 (0) CONSTRAINT [DF_VegetationInventoryActivityPersonnel_DateCreated] DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_VegetationInventoryActivityPersonnel] PRIMARY KEY CLUSTERED ([VegetationInventoryActivityID] ASC, [PersonnelID] ASC, [PersonnelRoleID] ASC),
-    CONSTRAINT [FK_VegetationInventoryActivityPersonnel_Personnel] FOREIGN KEY ([PersonnelID]) REFERENCES [ref].[Personnel] ([ID]),
     CONSTRAINT [FK_VegetationInventoryActivityPersonnel_PersonnelRole] FOREIGN KEY ([PersonnelRoleID]) REFERENCES [lookup].[PersonnelRole] ([ID]),
     CONSTRAINT [FK_VegetationInventoryActivityPersonnel_VegetationInventoryActivity] FOREIGN KEY ([VegetationInventoryActivityID]) REFERENCES [data].[VegetationInventoryActivity] ([ID])
 );
