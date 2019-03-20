@@ -30,7 +30,6 @@
     CONSTRAINT [CK_Transect_ThalwegUtmY_Range] CHECK ([ThalwegUtmY_m]>=(3500000) AND [ThalwegUtmY_m]<=(4350000)),
 	CONSTRAINT [CK_Transect_RRUtmX_Range] CHECK ([RRUtmX_m]>=(200000) AND [RRUtmX_m]<=(900000)),
     CONSTRAINT [CK_Transect_RRUtmY_Range] CHECK ([RRUtmY_m]>=(3500000) AND [RRUtmY_m]<=(4350000)),
-    CONSTRAINT [FK_Transect_GPSUnit] FOREIGN KEY ([GPSUnitID]) REFERENCES [ref].[GPSUnit] ([ID]),
     CONSTRAINT [FK_Transect_HorizontalDatum] FOREIGN KEY ([HorizontalDatumID]) REFERENCES [lookup].[HorizontalDatum] ([ID]),
 	CONSTRAINT [FK_Transect_UTMZone] FOREIGN KEY ([UTMZoneID]) REFERENCES [lookup].[UTMZone] ([ID]),
     CONSTRAINT [FK_Transect_RRMarkerInstalled] FOREIGN KEY ([RRMarkerInstalledID]) REFERENCES [lookup].[YesNoNoData] ([ID]),

@@ -4,7 +4,6 @@
     [PersonnelRoleID] TINYINT       NOT NULL,
     [DateCreated]     DATETIME2 (0) CONSTRAINT [DF_TreeCountActivityPersonnel_DateCreated] DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_TreeCountActivityPersonnel] PRIMARY KEY CLUSTERED ([TreeCountActivityID] ASC, [PersonnelID] ASC, [PersonnelRoleID] ASC),
-    CONSTRAINT [FK_TreeCountActivityPersonnel_Personnel] FOREIGN KEY ([PersonnelID]) REFERENCES [ref].[Personnel] ([ID]),
     CONSTRAINT [FK_TreeCountActivityPersonnel_PersonnelRole] FOREIGN KEY ([PersonnelRoleID]) REFERENCES [lookup].[PersonnelRole] ([ID]),
     CONSTRAINT [FK_TreeCountActivityPersonnel_TreeCountActivity] FOREIGN KEY ([TreeCountActivityID]) REFERENCES [data].[TreeCountActivity] ([ID])
 );

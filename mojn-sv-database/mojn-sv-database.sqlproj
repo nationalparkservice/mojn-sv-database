@@ -92,14 +92,10 @@
     <Build Include="data\Tables\PhotoActivity.sql" />
     <Build Include="lookup\Tables\UTMZone.sql" />
     <Build Include="data\Tables\TreeCountSpecies.sql" />
-    <Build Include="ref\Tables\Camera.sql" />
     <Build Include="lookup\Tables\DataProcessingLevel.sql" />
-    <Build Include="ref\Tables\GPSUnit.sql" />
     <Build Include="lookup\Tables\DataQualityFlag.sql" />
     <Build Include="ref\Tables\PhotoDescriptionCode.sql" />
     <Build Include="data\Tables\LPIDisturbance.sql" />
-    <Build Include="ref\Tables\CameraCard.sql" />
-    <Build Include="ref\Tables\Personnel.sql" />
     <Build Include="data\Tables\LPIActivity.sql" />
     <Build Include="lookup\Tables\HorizontalDatum.sql" />
     <Build Include="lookup\Tables\Park.sql" />
@@ -160,6 +156,9 @@
     <Build Include="lookup\Tables\VisitType.sql" />
     <Build Include="lookup\Tables\ProtectedStatus.sql" />
     <Build Include="lookup\Tables\PhotoSOP.sql" />
+    <Build Include="ref\Views\Camera_Shared.sql" />
+    <Build Include="ref\Views\CameraCard_Shared.sql" />
+    <Build Include="ref\Views\GPSUnit_Shared.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="mojn-sv-database.refactorlog" />

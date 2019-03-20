@@ -4,7 +4,6 @@
     [PersonnelRoleID] TINYINT       NOT NULL,
     [DateCreated]     DATETIME2 (0) CONSTRAINT [DF_UnknownPlantPersonnel_DateCreated] DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_UnknownPlantPersonnel] PRIMARY KEY CLUSTERED ([UnknownPlantID] ASC, [PersonnelID] ASC, [PersonnelRoleID] ASC),
-    CONSTRAINT [FK_UnknownPlantPersonnel_Personnel] FOREIGN KEY ([PersonnelID]) REFERENCES [ref].[Personnel] ([ID]),
     CONSTRAINT [FK_UnknownPlantPersonnel_PersonnelRole] FOREIGN KEY ([PersonnelRoleID]) REFERENCES [lookup].[PersonnelRole] ([ID]),
     CONSTRAINT [FK_UnknownPlantPersonnel_UnknownPlant] FOREIGN KEY ([UnknownPlantID]) REFERENCES [data].[UnknownPlant] ([ID])
 );
