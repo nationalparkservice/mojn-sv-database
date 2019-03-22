@@ -2,9 +2,11 @@
     [ID]          INT           IDENTITY (1, 1) NOT NULL,
     [LPIPointID]  INT           NOT NULL,
     [CoverTypeID] TINYINT       NOT NULL,
+	[LayerID]            TINYINT       NOT NULL,
     [DateCreated] DATETIME2 (0) CONSTRAINT [DF_LPINonRootedUnderstory_DateCreated] DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_LPIOtherCanopy] PRIMARY KEY CLUSTERED ([ID] ASC),
     CONSTRAINT [FK_LPIOtherCanopy_CoverType] FOREIGN KEY ([CoverTypeID]) REFERENCES [lookup].[CoverType] ([ID]),
+	CONSTRAINT [FK_LPIOtherCanopy_Layer] FOREIGN KEY ([LayerID]) REFERENCES [lookup].[Layer] ([ID]),
     CONSTRAINT [FK_LPIOtherCanopy_LPIPoint] FOREIGN KEY ([LPIPointID]) REFERENCES [data].[LPIPoint] ([ID])
 );
 
