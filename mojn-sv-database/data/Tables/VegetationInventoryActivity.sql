@@ -1,7 +1,8 @@
 ﻿CREATE TABLE [data].[VegetationInventoryActivity] (
     [ID]                      INT            IDENTITY (1, 1) NOT NULL,
     [VisitID]                 INT            NOT NULL,
-    [TransectID]              INT            NOT NULL,
+    [TransectID]              INT            NULL,
+	[TransectNumber]		  TINYINT		 NOT NULL,
     [StartTime]               DATETIME2 (0)  NOT NULL,
     [EndTime]                 DATETIME2 (0)  NOT NULL,
     [Notes]                   VARCHAR (1000) NULL,
@@ -19,8 +20,8 @@
 
 
 GO
-CREATE UNIQUE NONCLUSTERED INDEX [UX_VegetationInventoryActivity_VisitID_TransectID]
-    ON [data].[VegetationInventoryActivity]([VisitID] ASC, [TransectID] ASC);
+CREATE UNIQUE NONCLUSTERED INDEX [UX_VegetationInventoryActivity_VisitID_TransectNumber]
+    ON [data].[VegetationInventoryActivity]([VisitID] ASC, [TransectNumber] ASC);
 
 
 GO
