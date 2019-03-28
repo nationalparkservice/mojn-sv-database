@@ -1,10 +1,9 @@
 ﻿CREATE TABLE [data].[LPIActivityPersonnel] (
-    [LPIActivityID]         INT           IDENTITY (1, 1) NOT NULL,
+    [LPIActivityID]   INT		    NOT NULL,
     [PersonnelID]     INT           NOT NULL,
     [PersonnelRoleID] TINYINT       NOT NULL,
     [DateCreated]     DATETIME2 (0) CONSTRAINT [DF_LPIActivityPersonnel_DateCreated] DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_LPIActivityPersonnel] PRIMARY KEY CLUSTERED ([LPIActivityID] ASC, [PersonnelID] ASC, [PersonnelRoleID] ASC),
-    CONSTRAINT [FK_LPIActivityPersonnel_Personnel] FOREIGN KEY ([PersonnelID]) REFERENCES [ref].[Personnel] ([ID]),
     CONSTRAINT [FK_LPIActivityPersonnel_PersonnelRole] FOREIGN KEY ([PersonnelRoleID]) REFERENCES [lookup].[PersonnelRole] ([ID]),
     CONSTRAINT [FK_LPIActivityPersonnel_LPIActivity] FOREIGN KEY ([LPIActivityID]) REFERENCES [data].[LPIActivity] ([ID])
 );
@@ -19,7 +18,7 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to ref.Personnel (lookup of MOJN personnel)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'LPIActivityPersonnel', @level2type = N'COLUMN', @level2name = N'PersonnelID';
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to MOJN_SharedTables.ref.Personnel (lookup of MOJN personnel)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'LPIActivityPersonnel', @level2type = N'COLUMN', @level2name = N'PersonnelID';
 
 
 GO

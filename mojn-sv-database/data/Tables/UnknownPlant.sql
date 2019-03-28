@@ -16,7 +16,6 @@
     [ConfirmedTaxonID]       INT            NULL,
     CONSTRAINT [PK_UnknownPlant] PRIMARY KEY CLUSTERED ([ID] ASC),
     CONSTRAINT [FK_UnknownPlant_IsCollected] FOREIGN KEY ([IsCollectedID]) REFERENCES [lookup].[YesNoNoData] ([ID]),
-    CONSTRAINT [FK_UnknownPlant_Personnel] FOREIGN KEY ([IdentifierID]) REFERENCES [ref].[Personnel] ([ID]),
     CONSTRAINT [FK_UnknownPlant_Phenology] FOREIGN KEY ([PhenologyID]) REFERENCES [lookup].[Phenology] ([ID]),
     CONSTRAINT [FK_UnknownPlant_Taxon] FOREIGN KEY ([ConfirmedTaxonID]) REFERENCES [ref].[Taxon] ([ID]),
     CONSTRAINT [FK_UnknownPlant_UnknownPlantCode] FOREIGN KEY ([UnknownPlantCodeID]) REFERENCES [lookup].[UnknownPlantCode] ([ID]),
@@ -81,7 +80,7 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Description 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to ref.Personnel (lookup of MOJN personnel (temporary))', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'UnknownPlant', @level2type = N'COLUMN', @level2name = N'IdentifierID';
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to MOJN_SharedTables.ref.Personnel (lookup of MOJN personnel (temporary))', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'UnknownPlant', @level2type = N'COLUMN', @level2name = N'IdentifierID';
 
 
 GO

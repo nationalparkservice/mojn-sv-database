@@ -99,7 +99,6 @@
     <Build Include="ref\Tables\PhotoDescriptionCode.sql" />
     <Build Include="data\Tables\LPIDisturbance.sql" />
     <Build Include="ref\Tables\CameraCard.sql" />
-    <Build Include="ref\Tables\Personnel.sql" />
     <Build Include="data\Tables\LPIActivity.sql" />
     <Build Include="lookup\Tables\HorizontalDatum.sql" />
     <Build Include="lookup\Tables\Park.sql" />
