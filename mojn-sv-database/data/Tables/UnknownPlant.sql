@@ -80,7 +80,7 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Description 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to ref.Personnel (lookup of MOJN personnel (temporary))', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'UnknownPlant', @level2type = N'COLUMN', @level2name = N'IdentifierID';
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to MOJN_SharedTables.ref.Personnel (lookup of MOJN personnel (temporary))', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'UnknownPlant', @level2type = N'COLUMN', @level2name = N'IdentifierID';
 
 
 GO

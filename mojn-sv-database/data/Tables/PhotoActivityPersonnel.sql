@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [data].[PhotoActivityPersonnel] (
-    [PhotoActivityID]         INT           IDENTITY (1, 1) NOT NULL,
+    [PhotoActivityID] INT           NOT NULL,
     [PersonnelID]     INT           NOT NULL,
     [PersonnelRoleID] TINYINT       NOT NULL,
     [DateCreated]     DATETIME2 (0) CONSTRAINT [DF_PhotoActivityPersonnel_DateCreated] DEFAULT (getdate()) NOT NULL,
@@ -18,7 +18,7 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to ref.Personnel (lookup of MOJN personnel)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'PhotoActivityPersonnel', @level2type = N'COLUMN', @level2name = N'PersonnelID';
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to MOJN_SharedTables.ref.Personnel (lookup of MOJN personnel)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'PhotoActivityPersonnel', @level2type = N'COLUMN', @level2name = N'PersonnelID';
 
 
 GO
