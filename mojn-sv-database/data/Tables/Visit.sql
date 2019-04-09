@@ -6,9 +6,6 @@
     [EndDate]				  DATETIME2(0)	 NULL, 
 	[StartTime]               DATETIME2 (0)  NULL,
     [EndTime]				  DATETIME2(0)	 NULL, 
-	[WindID]                  TINYINT        NULL,
-    [SkyConditionID]          TINYINT        NULL,
-    [WeatherNotes]			  VARCHAR (200)  NULL,
 	[Notes]                   VARCHAR (2000) NULL,
 	[VisitTypeID]			  TINYINT		 CONSTRAINT [DF_Visit_VisitType] DEFAULT ((1)) NOT NULL,
     [DataProcessingLevelID]   TINYINT        CONSTRAINT [DF_Visit_DataProcessingLevel] DEFAULT ((1)) NOT NULL,
@@ -18,15 +15,12 @@
     
     CONSTRAINT [PK_Visit] PRIMARY KEY CLUSTERED ([ID] ASC),
     CONSTRAINT [CK_Visit_DataProcessingLevelNote_DisallowZeroLength] CHECK (len([DataProcessingLevelNote])>(0)),
-	CONSTRAINT [CK_Visit_WeatherNotes_DisallowZeroLength] CHECK (len([WeatherNotes])>(0)),
     CONSTRAINT [CK_Visit_Notes_DisallowZeroLength] CHECK (len([Notes])>(0)),
     CONSTRAINT [CK_Visit_StartDate_Range] CHECK ([StartDate]>='1/1/2017' AND [StartDate]<=CONVERT([datetime],CONVERT([varchar],getdate(),(1)),(1))),
     CONSTRAINT [CK_Visit_EndDate_Range] CHECK ([StartDate]>='1/1/2017' AND [StartDate]<=CONVERT([datetime],CONVERT([varchar],getdate(),(1)),(1))),
 	CONSTRAINT [FK_Visit_DataProcessingLevel] FOREIGN KEY ([DataProcessingLevelID]) REFERENCES [lookup].[DataProcessingLevel] ([ID]),
     CONSTRAINT [FK_Visit_Protocol] FOREIGN KEY ([ProtocolID]) REFERENCES [ref].[Protocol] ([ID]),
     CONSTRAINT [FK_Visit_Site] FOREIGN KEY ([SiteID]) REFERENCES [data].[Site] ([ID]),
-    CONSTRAINT [FK_Visit_SkyCondition] FOREIGN KEY ([SkyConditionID]) REFERENCES [lookup].[SkyCondition] ([ID]),
-    CONSTRAINT [FK_Visit_Wind] FOREIGN KEY ([WindID]) REFERENCES [lookup].[Wind] ([ID]),
 	CONSTRAINT [FK_Visit_VisitType] FOREIGN KEY ([VisitTypeID]) REFERENCES [lookup].[VisitType] ([ID])
 );
 
@@ -66,18 +60,6 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Date monitor
 
 GO
 EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Time monitoring visit ended', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'Visit', @level2type = N'COLUMN', @level2name = N'EndTime';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to lookup.Wind (wind speed (Beaufort scale))', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'Visit', @level2type = N'COLUMN', @level2name = N'WindID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to lookup.SkyCondition (amount of cloud cover observed)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'Visit', @level2type = N'COLUMN', @level2name = N'SkyConditionID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Notes regarding current/recent weather', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'Visit', @level2type = N'COLUMN', @level2name = N'WeatherNotes';
 
 
 GO
