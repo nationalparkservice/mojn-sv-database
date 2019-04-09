@@ -3,7 +3,9 @@
     [VisitID]                 INT            NOT NULL,
     [TransectID]              INT            NULL,
 	[TransectNumber]		  TINYINT		 NOT NULL,
-    [StartTime]               DATETIME2 (0)  NOT NULL,
+    [WindID]                  TINYINT        NOT NULL,
+    [SkyConditionID]          TINYINT        NULL,
+	[StartTime]               DATETIME2 (0)  NOT NULL,
     [EndTime]                 DATETIME2 (0)  NOT NULL,
     [Notes]                   VARCHAR (1000) NULL,
     [DataProcessingLevelID]   TINYINT        CONSTRAINT [DF_LPITransect_DataProcessingLevelID] DEFAULT ((1)) NOT NULL,
@@ -13,6 +15,8 @@
     CONSTRAINT [PK_LPITransect] PRIMARY KEY CLUSTERED ([ID] ASC),
     CONSTRAINT [CK_LPIActivity_DataProcessingLevelNote_DisallowZeroLength] CHECK (len([DataProcessingLevelNote])>(0)),
     CONSTRAINT [CK_LPIActivity_Notes_DisallowZeroLength] CHECK (len([Notes])>(0)),
+	CONSTRAINT [FK_Visit_SkyCondition] FOREIGN KEY ([SkyConditionID]) REFERENCES [lookup].[SkyCondition] ([ID]),
+    CONSTRAINT [FK_Visit_Wind] FOREIGN KEY ([WindID]) REFERENCES [lookup].[Wind] ([ID]),
     CONSTRAINT [FK_LPIActivity_DataProcessingLevel] FOREIGN KEY ([DataProcessingLevelID]) REFERENCES [lookup].[DataProcessingLevel] ([ID]),
     CONSTRAINT [FK_LPIActivity_Transect] FOREIGN KEY ([TransectID]) REFERENCES [data].[Transect] ([ID]),
     CONSTRAINT [FK_LPIActivity_Visit] FOREIGN KEY ([VisitID]) REFERENCES [data].[Visit] ([ID])
@@ -66,4 +70,11 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Notes for Da
 
 GO
 EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Date the record was created', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'LPIActivity', @level2type = N'COLUMN', @level2name = N'DateCreated';
+
+GO
+
+
+
+GO
+
 
