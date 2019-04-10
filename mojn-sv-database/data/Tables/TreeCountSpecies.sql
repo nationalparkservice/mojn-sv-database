@@ -2,7 +2,7 @@
     [ID]                  INT            IDENTITY (1, 1) NOT NULL,
     [TreeCountActivityID] INT            NOT NULL,
     [TaxonID]             INT            NOT NULL,
-    [UnknownPlantCodeID]  TINYINT        CONSTRAINT [DF_TreeCountSpecies_UnknownPlantCodeID] DEFAULT ((27)) NOT NULL,
+    [UnknownPlantCodeID]  TINYINT        CONSTRAINT [DF_TreeCountSpecies_UnknownPlantCodeID] DEFAULT ((54)) NOT NULL,
     [LiveAdultCount]      INT            NOT NULL,
     [DeadAdultCount]      INT            NOT NULL,
     [LiveJuvenileCount]   INT            NULL,

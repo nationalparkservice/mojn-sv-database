@@ -2,7 +2,7 @@
     [ID]                            INT            IDENTITY (1, 1) NOT NULL,
     [VegetationInventoryActivityID] INT            NOT NULL,
     [TaxonID]                       INT            NOT NULL,
-    [UnknownPlantCodeID]            TINYINT        CONSTRAINT [DF_VegetationInventorySpecies_UnknownPlantCodeID] DEFAULT ((27)) NOT NULL,
+    [UnknownPlantCodeID]            TINYINT        CONSTRAINT [DF_VegetationInventorySpecies_UnknownPlantCodeID] DEFAULT ((54)) NOT NULL,
     [Notes]                         VARCHAR (1000) NULL,
     CONSTRAINT [PK_VegetationInventorySpecies] PRIMARY KEY CLUSTERED ([ID] ASC),
     CONSTRAINT [CK_VegetationInventorySpecies_Notes_DisallowZeroLength] CHECK (len([Notes])>(0)),
