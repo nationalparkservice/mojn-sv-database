@@ -2,7 +2,7 @@
     [ID]                 INT           IDENTITY (1, 1) NOT NULL,
     [LPIPointID]         INT           NOT NULL,
     [TaxonID]            INT           NOT NULL,
-    [UnknownPlantCodeID] TINYINT       CONSTRAINT [DF_LPIVegetation_UnknownPlantCodeID] DEFAULT ((27)) NOT NULL,
+    [UnknownPlantCodeID] TINYINT       CONSTRAINT [DF_LPIVegetation_UnknownPlantCodeID] DEFAULT ((54)) NOT NULL,
     [LayerID]            TINYINT       NOT NULL,
     [IsDeadID]           VARCHAR(2)       NOT NULL,
     [DateCreated]        DATETIME2 (0) CONSTRAINT [DF_LPIVegetation_DateCreated] DEFAULT (getdate()) NOT NULL,
