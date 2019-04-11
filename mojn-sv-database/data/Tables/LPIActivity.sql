@@ -5,6 +5,7 @@
 	[TransectNumber]		  TINYINT		 NOT NULL,
     [WindID]                  TINYINT        NOT NULL,
     [SkyConditionID]          TINYINT        NULL,
+	[Water]					VARCHAR(2)		NULL, 
 	[StartTime]               DATETIME2 (0)  NOT NULL,
     [EndTime]                 DATETIME2 (0)  NOT NULL,
     [Notes]                   VARCHAR (1000) NULL,
@@ -19,6 +20,7 @@
     CONSTRAINT [FK_Visit_Wind] FOREIGN KEY ([WindID]) REFERENCES [lookup].[Wind] ([ID]),
     CONSTRAINT [FK_LPIActivity_DataProcessingLevel] FOREIGN KEY ([DataProcessingLevelID]) REFERENCES [lookup].[DataProcessingLevel] ([ID]),
     CONSTRAINT [FK_LPIActivity_Transect] FOREIGN KEY ([TransectID]) REFERENCES [data].[Transect] ([ID]),
+	CONSTRAINT [FK_LPIActivity_Water] FOREIGN KEY ([Water]) REFERENCES [lookup].[YesNoNoData] ([ID]),
     CONSTRAINT [FK_LPIActivity_Visit] FOREIGN KEY ([VisitID]) REFERENCES [data].[Visit] ([ID])
 );
 
