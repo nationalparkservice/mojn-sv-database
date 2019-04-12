@@ -4,8 +4,6 @@
     [ProtocolID]              TINYINT        CONSTRAINT [DF_Visit_ProtocolConfiguration] DEFAULT ((1)) NOT NULL,
     [StartDate]               DATETIME2 (0)  NOT NULL,
     [EndDate]				  DATETIME2(0)	 NULL, 
-	[StartTime]               DATETIME2 (0)  NULL,
-    [EndTime]				  DATETIME2(0)	 NULL, 
 	[Notes]                   VARCHAR (2000) NULL,
 	[VisitTypeID]			  TINYINT		 CONSTRAINT [DF_Visit_VisitType] DEFAULT ((1)) NOT NULL,
     [DataProcessingLevelID]   TINYINT        CONSTRAINT [DF_Visit_DataProcessingLevel] DEFAULT ((1)) NOT NULL,
@@ -51,7 +49,7 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Date monitor
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Time monitoring visit began', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'Visit', @level2type = N'COLUMN', @level2name = N'StartTime';
+
 
 
 GO
@@ -59,7 +57,7 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Date monitor
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Time monitoring visit ended', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'Visit', @level2type = N'COLUMN', @level2name = N'EndTime';
+
 
 
 GO
