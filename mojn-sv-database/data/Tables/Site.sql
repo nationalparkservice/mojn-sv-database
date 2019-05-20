@@ -17,7 +17,7 @@
     CONSTRAINT [PK_SpringLocation] PRIMARY KEY CLUSTERED ([ID] ASC),
     CONSTRAINT [CK_Site_Code_DisallowZeroLength] CHECK (len([Code])>(0)),
     CONSTRAINT [CK_Site_Name_DisallowZeroLength] CHECK (len([Name])>(0)),
-	CONSTRAINT [CK_Site_TransectBearing_Range] CHECK (([TransectBearing])=(360)),
+	CONSTRAINT [CK_Site_TransectBearing_Range] CHECK (([TransectBearing])<(360) AND ([TransectBearing])>=(0)),
     CONSTRAINT [CK_Site_PointInterceptSpacing_m_Range] CHECK ([PointInterceptSpacing_m]>=(0.5) AND [PointInterceptSpacing_m]<=(2)),
 	CONSTRAINT [CK_Site_X_UTM_NAD83_11N_range] CHECK ([X_UTM_NAD83_11N]>=(350000) AND [X_UTM_NAD83_11N]<=(900000) OR [X_UTM_NAD83_11N]=(0)),
     CONSTRAINT [CK_Site_Y_UTM_NAD83_11N_range] CHECK ([Y_UTM_NAD83_11N]>=(3500000) AND [Y_UTM_NAD83_11N]<=(4350000) OR [Y_UTM_NAD83_11N]=(0)),
