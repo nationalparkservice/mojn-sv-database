@@ -1,7 +1,9 @@
 ﻿CREATE TABLE [data].[UnknownPlant] (
     [ID]                     INT            IDENTITY (1, 1) NOT NULL,
     [VisitID]                INT            NOT NULL,
-    [IsCollectedID]          VARCHAR(2)        NOT NULL,
+    [StartTime]               DATETIME2 (0)  NULL,
+    [EndTime]                 DATETIME2 (0)  NULL,
+	[IsCollectedID]          VARCHAR(2)        NOT NULL,
     [UnknownPlantCodeID]     TINYINT        NOT NULL,
     [GeneralDescription]     VARCHAR (1000) NULL,
     [MostSalientFeature]     VARCHAR (500)  NULL,
@@ -33,6 +35,14 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Primary key 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to data.Visit (information about individual sampling visits)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'UnknownPlant', @level2type = N'COLUMN', @level2name = N'VisitID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Time of day that data collection on unknown plant form began', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'UnknownPlant', @level2type = N'COLUMN', @level2name = N'StartTime';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Time of day that data collection on unknown plant form was completed', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'UnknownPlant', @level2type = N'COLUMN', @level2name = N'EndTime';
 
 
 GO
