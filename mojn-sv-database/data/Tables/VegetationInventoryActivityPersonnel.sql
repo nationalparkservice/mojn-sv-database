@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [data].[VegetationInventoryActivityPersonnel] (
-    [VegetationInventoryActivityID]         INT           IDENTITY (1, 1) NOT NULL,
+    [VegetationInventoryActivityID]         INT           NOT NULL,
     [PersonnelID]     INT           NOT NULL,
     [PersonnelRoleID] TINYINT       NOT NULL,
     [DateCreated]     DATETIME2 (0) CONSTRAINT [DF_VegetationInventoryActivityPersonnel_DateCreated] DEFAULT (getdate()) NOT NULL,
