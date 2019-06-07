@@ -75,6 +75,7 @@
     <Folder Include="app\Views" />
     <Folder Include="ref\Views" />
     <Folder Include="lookup\Views" />
+    <Folder Include="analysis" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="data\Tables\TreeCountActivity.sql" />
@@ -158,6 +159,16 @@
     <Build Include="ref\Views\Camera_Shared.sql" />
     <Build Include="ref\Views\CameraCard_Shared.sql" />
     <Build Include="ref\Views\GPSUnit_Shared.sql" />
+    <Build Include="analysis\Spring.sql" />
+    <Build Include="analysis\SpringVisit.sql" />
+    <Build Include="analysis\LPITransect.sql" />
+    <Build Include="analysis\LPICanopy.sql" />
+    <Build Include="analysis\LPIDisturbance.sql" />
+    <Build Include="analysis\LPISoilSurface.sql" />
+    <Build Include="analysis\TreeCountTransect.sql" />
+    <Build Include="analysis\TreeCount.sql" />
+    <Build Include="analysis\VegetationInventoryTransect.sql" />
+    <Build Include="analysis\VegetationInventory.sql" />
     <Build Include="ref\Tables\FieldSeason.sql" />
   </ItemGroup>
   <ItemGroup>

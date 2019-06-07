@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [data].[UnknownPlantPersonnel] (
-    [UnknownPlantID]         INT           IDENTITY (1, 1) NOT NULL,
+    [UnknownPlantID]  INT			NOT NULL,
     [PersonnelID]     INT           NOT NULL,
     [PersonnelRoleID] TINYINT       NOT NULL,
     [DateCreated]     DATETIME2 (0) CONSTRAINT [DF_UnknownPlantPersonnel_DateCreated] DEFAULT (getdate()) NOT NULL,
