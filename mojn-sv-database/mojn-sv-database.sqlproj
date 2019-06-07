@@ -169,6 +169,7 @@
     <Build Include="analysis\TreeCount.sql" />
     <Build Include="analysis\VegetationInventoryTransect.sql" />
     <Build Include="analysis\VegetationInventory.sql" />
+    <Build Include="ref\Tables\FieldSeason.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="mojn-sv-database.refactorlog" />

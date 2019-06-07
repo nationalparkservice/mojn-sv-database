@@ -4,6 +4,7 @@
     [ProtocolID]              TINYINT        CONSTRAINT [DF_Visit_ProtocolConfiguration] DEFAULT ((1)) NOT NULL,
     [StartDate]               DATETIME2 (0)  NOT NULL,
     [EndDate]				  DATETIME2(0)	 NULL, 
+	[FieldSeason]			  VARCHAR (20)   NOT NULL,
 	[Notes]                   VARCHAR (2000) NULL,
 	[VisitTypeID]			  TINYINT		 CONSTRAINT [DF_Visit_VisitType] DEFAULT ((1)) NOT NULL,
     [DataProcessingLevelID]   TINYINT        CONSTRAINT [DF_Visit_DataProcessingLevel] DEFAULT ((1)) NOT NULL,
@@ -18,6 +19,7 @@
     CONSTRAINT [CK_Visit_EndDate_Range] CHECK ([StartDate]>='1/1/2017' AND [StartDate]<=CONVERT([datetime],CONVERT([varchar],getdate(),(1)),(1))),
 	CONSTRAINT [FK_Visit_DataProcessingLevel] FOREIGN KEY ([DataProcessingLevelID]) REFERENCES [lookup].[DataProcessingLevel] ([ID]),
     CONSTRAINT [FK_Visit_Protocol] FOREIGN KEY ([ProtocolID]) REFERENCES [ref].[Protocol] ([ID]),
+	CONSTRAINT [FK_Visit_FieldSeason] FOREIGN KEY (FieldSeason) REFERENCES [ref].[FieldSeason] ([Label]),
     CONSTRAINT [FK_Visit_Site] FOREIGN KEY ([SiteID]) REFERENCES [data].[Site] ([ID]),
 	CONSTRAINT [FK_Visit_VisitType] FOREIGN KEY ([VisitTypeID]) REFERENCES [lookup].[VisitType] ([ID])
 );
