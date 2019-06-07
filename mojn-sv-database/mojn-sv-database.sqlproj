@@ -158,6 +158,7 @@
     <Build Include="ref\Views\Camera_Shared.sql" />
     <Build Include="ref\Views\CameraCard_Shared.sql" />
     <Build Include="ref\Views\GPSUnit_Shared.sql" />
+    <Build Include="ref\Tables\FieldSeason.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="mojn-sv-database.refactorlog" />
