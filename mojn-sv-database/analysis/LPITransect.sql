@@ -5,6 +5,7 @@
 			s.Name AS SpringName,
 			sc.Label AS SpringCategory,
 			vt.Label AS VisitType,
+			v.FieldSeason AS FieldSeason,
 			CONVERT(VARCHAR(10), v.StartDate, 101) AS StartDate,
 			CONVERT(VARCHAR(8), lpi.StartTime, 108) AS StartTime,
 			CONVERT(VARCHAR(8), lpi.EndTime, 108) AS EndTime,
