@@ -76,6 +76,7 @@
     <Folder Include="ref\Views" />
     <Folder Include="lookup\Views" />
     <Folder Include="analysis" />
+    <Folder Include="app\Stored Procedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="data\Tables\TreeCountActivity.sql" />
@@ -170,6 +171,7 @@
     <Build Include="analysis\VegetationInventoryTransect.sql" />
     <Build Include="analysis\VegetationInventory.sql" />
     <Build Include="ref\Tables\FieldSeason.sql" />
+    <Build Include="app\Stored Procedures\UpdateTBDSpecies.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="mojn-sv-database.refactorlog" />
