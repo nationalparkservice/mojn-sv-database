@@ -13,7 +13,7 @@
 
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [UX_LPIOtherCanopy_CoverTypeID_LPIPointID]
-    ON [data].[LPIOtherCanopy]([CoverTypeID] ASC, [LPIPointID] ASC);
+    ON [data].[LPIOtherCanopy]([LayerID] ASC, [CoverTypeID] ASC, [LPIPointID] ASC);
 
 
 GO
