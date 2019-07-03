@@ -7,14 +7,16 @@
 	[Water]				 VARCHAR(2)		NULL,
 	[SurfaceTaxonID]            INT           NULL,
     [SurfaceUnknownPlantCodeID] TINYINT       CONSTRAINT [DF_LPIPoint_SurfaceUnknownPlantCodeID] DEFAULT ((54)) NOT NULL,
-    [DateCreated]        DATETIME2 (0)  CONSTRAINT [DF_LPIPoint_DateCreated] DEFAULT (getdate()) NOT NULL,
+    [SurfaceIsDeadID]           VARCHAR(2)       NOT NULL DEFAULT 'NA',
+	[DateCreated]        DATETIME2 (0)  CONSTRAINT [DF_LPIPoint_DateCreated] DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_LPIPoint] PRIMARY KEY CLUSTERED ([ID] ASC),
     CONSTRAINT [FK_LPIPoint_DataAccuracy] FOREIGN KEY ([DataAccuracyID]) REFERENCES [lookup].[DataAccuracy] ([ID]),
     CONSTRAINT [FK_LPIPoint_LPIActivity] FOREIGN KEY ([LPIActivityID]) REFERENCES [data].[LPIActivity] ([ID]),
 	CONSTRAINT [FK_LPoint_Water] FOREIGN KEY ([Water]) REFERENCES [lookup].[YesNoNoData] ([ID]),
 	CONSTRAINT [FK_LPIPoint_SurfaceTaxon] FOREIGN KEY ([SurfaceTaxonID]) REFERENCES [ref].[Taxon] ([ID]),
     CONSTRAINT [FK_LPIPoint_SurfaceUnknownPlantCode] FOREIGN KEY ([SurfaceUnknownPlantCodeID]) REFERENCES [lookup].[UnknownPlantCode] ([ID]),
-    CONSTRAINT [FK_LPIPoint_SoilSurfaceClass] FOREIGN KEY ([SoilSurfaceClassID]) REFERENCES [lookup].[SoilSurfaceClass] ([ID])
+    CONSTRAINT [FK_LPIPoint_IsDead] FOREIGN KEY ([SurfaceIsDeadID]) REFERENCES [lookup].[YesNoNoData] ([ID]),
+	CONSTRAINT [FK_LPIPoint_SoilSurfaceClass] FOREIGN KEY ([SoilSurfaceClassID]) REFERENCES [lookup].[SoilSurfaceClass] ([ID])
 );
 
 
@@ -41,6 +43,10 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Location of 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to lookup.SoilSurfaceClass (type of soil surface found at a point)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'LPIPoint', @level2type = N'COLUMN', @level2name = N'SoilSurfaceClassID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'Foreign key to lookup.YesNoNoData (indicates whether plant is dead)', @level0type = N'SCHEMA', @level0name = N'data', @level1type = N'TABLE', @level1name = N'LPIPoint', @level2type = N'COLUMN', @level2name = N'SurfaceIsDeadID';
 
 
 GO
