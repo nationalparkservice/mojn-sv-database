@@ -172,6 +172,9 @@
     <Build Include="analysis\VegetationInventory.sql" />
     <Build Include="ref\Tables\FieldSeason.sql" />
     <Build Include="app\Stored Procedures\UpdateTBDSpecies.sql" />
+    <Build Include="app\Views\VisitDPL.sql" />
+    <Build Include="app\Views\ActivityDashboard.sql" />
+    <Build Include="Security\sp_executor.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="mojn-sv-database.refactorlog" />

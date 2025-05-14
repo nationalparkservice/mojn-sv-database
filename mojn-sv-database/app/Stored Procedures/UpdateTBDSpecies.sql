@@ -64,3 +64,9 @@ AS
 	WHERE	inv.VisitID = @SpringVisitID AND inv.UnknownPlantCodeID = @UnknownSpeciesID
 
 RETURN 0
+
+GO
+GRANT EXECUTE
+    ON OBJECT::[app].[UpdateTBDSpecies] TO [sp_executor]
+    AS [dbo];
+
